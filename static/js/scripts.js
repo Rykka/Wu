@@ -42,7 +42,6 @@ jQuery(function($) {
 
       History.Adapter.bind(window, 'statechange', function() {
           var State = History.getState();
-          console.log(History);
 
           // Get the requested url and replace the current content
           // with the loaded content
@@ -72,14 +71,12 @@ jQuery(function($) {
 
       $('body').on('click', '.js-ajax-link, .pagination a, .detail a, .tags a, .navigation a, .header a', function(e) {
           e.preventDefault();
-          console.log(0);
 
           if (loading === false) {
               var currentState = History.getState();
               // When href is relative, we should add current domain.
               var url = $(this).attr('href');
 
-              console.log(url);
 
               if (!url.match(/^http/)) {
                   url = window.location.protocol + '//' + window.location.host + url;
@@ -97,7 +94,6 @@ jQuery(function($) {
 
                   History.pushState({}, title, url);
               } else {
-                  console.log('the same ');
                   // Swap in the latest post or post index as needed
                   if ($(this).hasClass('js-show-index')) {
 
