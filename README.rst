@@ -1,7 +1,17 @@
+README
+======
+
+
+Redesigned based on flasky_ by Rykka.
+
+Added Nprogress, NavBar Top, Responsive layout, Multi Pagination 
+
+
+
 flasky
 ======
 
-Pelican theme I created for fjavieralba.com
+Pelican theme created for fjavieralba.com
 Feel free to add and also tweak it and add more features to it
 
 
@@ -82,3 +92,4 @@ Save the changes to your settings file and then regenerate your site by using th
 make html
 Themes can also be specified directly via the -t ~/themes/flask parameter to the pelican command. If you want to edit your theme, make sure that any edits you make are made to the copy stored in ~/themes/flask. Any changes made to files stored in your site's output directory will be deleted the next time you generate your site.
 
+.. _flasky: https://github.com/fjavieralba/flasky

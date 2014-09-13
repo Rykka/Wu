@@ -4,16 +4,17 @@
 
 {% block content %}
     <h1 class="title"> {{ article.title }}</h1>
-    <p class=date> {{ article.locale_date }} </p>
+    <div class='article-date clearfix'> {{ article.locale_date }} </div>
+    <br>
     {{ article.content }}
-    
-    {% include "twitter.html" %}
+    {#{% include "twitter.html" %}#}
     {% if article.tags %}
-    <p class=tags>This entry was tagged as
+    <p class=tags>Tags:
       {% for tag in article.tags %}
       <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
       {% endfor %}
     </p>
     {% endif %}
+    {% include "youyan.html" %}
     {% include "disqus.html" %}
 {% endblock %}

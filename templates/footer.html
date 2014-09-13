@@ -1,28 +1,22 @@
-<div class=footer>
-  <p>&copy; Copyright <script language="JavaScript">var date = new Date(); document.write(date.getFullYear());</script> by {{ AUTHOR }}</p>
-  <p> Powered by <a href="http://pypi.python.org/pypi/pelican/" target="_blank">Pelican</a>.  
-    <a href="https://github.com/fjavieralba/flasky">Theme</a>  by <a href="http://fjavieralba.com">fjavieralba</a>
+<footer class='footer'>
+<div class="separator"></div>
+<div class="container">
+    <p>&copy; Copyright 2014 and Themed <a href="">Wu</a> &trade; by <a href="{{ GITHUB_URL }}">{{ AUTHOR }}</a>.
+  Powered by <a href="http://pypi.python.org/pypi/pelican/" target="_blank">Pelican</a>.  
   </p> 
   <p>
     <div class=social style="font-size: 27px;">
       <ul>
-        <script language="JavaScript">
-          u = '{{ MAIL_USERNAME }}';
-          s = '{{ MAIL_HOST }}';
-          document.write('<a href=\"mailto:' + u + '@' + s + '\" target=\"_blank\">');
-        </script>
+            <a href="mailto:{{ MAIL_USERNAME }}@{{ MAIL_HOST }}" target="_blank">
             <li><i class="icon-envelope icon-large"></i> </li>
+            </a>
         </a>
-        <a href="http://twitter.com/{{ TWITTER_USERNAME }}" target="_blank"> <li> <i class="icon-twitter-sign icon-large"> </li></i> </a>
-        <a href="{{ LINKEDIN_URL }}" target="_blank"><li><i class="icon-linkedin-sign icon-large" ></i></li></a>
-        <a href="{{ GITHUB_URL }}" target="_blank"> <li> <i class="icon-github-sign icon-large"></i> </li> </a>
-        <a href="{{ FACEBOOK_URL }}" target="_blank"><li> <i class="icon-facebook-sign icon-large"></i></li> </a>
-        <a href="{{ GOOGLEPLUS_URL }}" target="_blank"><li><i class="icon-google-plus-sign icon-large"></i> </li> </a>
-        <a href="{{ PINTEREST_URL }}" target="_blank"><li><i class="icon-pinterest-sign icon-large"></i></li></a>
-
+        <a href="http://twitter.com/{{ TWITTER_USERNAME }}" target="_blank"> <li><i class="icon-twitter-sign icon-large"></i></li></a>
+        <a href="{{ GITHUB_URL }}" target="_blank"><li><i class="icon-github-sign icon-large"></i></li></a>
 
         <a href="{{ SITEURL }}/feeds/all.rss.xml" rel="alternate" title="Recent Blog Posts"><li> <i class="icon-rss icon-large"></i> </li></a>
       </ul>
     </div>
   </p>
 </div>
+</footer>
