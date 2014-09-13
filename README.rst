@@ -7,7 +7,6 @@ Redesigned based on flasky_.
 
 Added Nprogress, NavBar Top, Responsive layout, Multi Pagination 
 
-
 .. image:: https://github.com/Rykka/github_things/raw/master/image/wu01.png
 .. image:: https://github.com/Rykka/github_things/raw/master/image/wu02.png
 .. image:: https://github.com/Rykka/github_things/raw/master/image/wu03.png
