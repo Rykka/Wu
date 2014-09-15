@@ -1,10 +1,19 @@
 <header class="header" >
 <div class="container">
     <div class="scroll top">
-        <a><i class="icon-chevron-up icon-large"></i></a>
+        <a href='#'><i class="icon-chevron-up icon-large"></i></a>
     </div>
     <div class="brand">
-        <a href="{{ SITEURL }}/">{{SITENAME}}</a> <span class="muted">{{SITESUBTITLE}}</span>
+        <div class="flip_container">
+            <div class="flipper">
+                <div class="front">
+                    <p><a href="{{ SITEURL }}/">{{SITENAME}}</a></p>
+                </div>
+                <div class="back">
+                    <p><a href="{{ SITEURL }}/">{{ SITESUBTITLE if SITESUBTITLE else SITENAME }}</a></p>
+                </div>			
+            </div>
+        </div>
     </div>
 
     <div class=navigation>

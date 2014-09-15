@@ -5,7 +5,8 @@ A Theme for Pelican_.
 
 Redesigned based on flasky_.
 
-Added Nprogress, NavBar Top, Responsive layout, Multi Pagination 
+Added HTML5/CSS3 effects, Ajax Loading, 
+Responsive layout, Auto Theme Loading.
 
 .. image:: https://github.com/Rykka/github_things/raw/master/image/wu01.png
 .. image:: https://github.com/Rykka/github_things/raw/master/image/wu02.png

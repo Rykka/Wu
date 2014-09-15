@@ -1,0 +1,29 @@
+html {
+    background-color: @color;
+
+}
+body {
+    background-color: @color;
+    .directional(darken(@color,10%) 0px, @color 300px, 150deg);
+}
+pre {
+    background-color: darken(@color,5%);
+
+}
+.header {
+    background-color: @color;
+}
+.front a {
+    color: #888;
+    text-shadow: 1px 1px 0px #fff;
+}
+.front {
+    background-color: darken(@color, 3%);
+}
+.back a {
+    color: #333;
+    text-shadow: 1px 1px 0px #fff;
+}
+.back {
+    background-color: darken(@color, 3%);
+}

@@ -7,19 +7,22 @@
     <title>{% block title %} {{SITENAME}} {% endblock %}</title>
 
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/typo.css" type="text/css"/>
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" />
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css" type="text/css" />
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/nprogress.css" type="text/css" />
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font-awesome.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/flip.css" type="text/css"/>
+    {# NO SITEURL for compare in loadTheme #}
+    <link rel="stylesheet" id='css_theme' href="/theme/css/theme.gray.css" type="text/css"/>
   </head>
-  <body>
+  <body >
     {% block header %}
         {% include "header.html" %}
     {% endblock %}
-
         
     <div class='body'>
-        <div id='ajax-container' class=container>
+        <div id='ajax-container' class='container typo'>
             {% block content %} {% endblock %}
         </div>
     </div>

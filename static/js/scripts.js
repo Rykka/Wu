@@ -9,7 +9,19 @@ jQuery(function($) {
 
         function refreshNav() {
             curPos = $(document).scrollTop();
-            if (curPos - prevPos > 50) {
+            if (curPos > 10) {
+                if (header.hasClass('transparent')) {
+                    header.removeClass('transparent');
+                }
+            }
+            if (curPos < 10) {
+                header.addClass('transparent');
+                if (header.hasClass('dynamic')) {
+                    header.removeClass('dynamic');
+                }
+                prevPos = curPos;
+            }
+            else if (curPos - prevPos > 50) {
                 if (!header.hasClass('dynamic')) {
                     header.addClass('dynamic');
                 }
@@ -22,6 +34,8 @@ jQuery(function($) {
             }
         }
 
+        refreshNav();
+
         $(window).scroll(refreshNav);
     }
 
@@ -29,6 +43,27 @@ jQuery(function($) {
     /* ============================================================ */
     /* Ajax Loading */
     /* ============================================================ */
+    function loadTheme(html) {
+      var tag, theme, href,
+          $css_theme = $('#css_theme');
+      if (html) {
+         tag = $('#tag-theme', html);
+      } else {
+         tag = $('#tag-theme');
+      }
+
+
+      if (tag.length == 1) {
+        theme  = tag.attr('data-theme');
+        href = '/theme/css/theme.'+theme+'.css';
+      } else {
+        href = '/theme/css/theme.gray.css';
+      }
+      if ($css_theme.attr('href') !== href ) {
+          $css_theme.attr('href', href);
+      }
+    }
+
     function ajaxLoad() {
         var History = window.History;
         var loading = false;
@@ -49,6 +84,8 @@ jQuery(function($) {
                 var $html = $(result);
                 var $newContent = $('#ajax-container', $html).contents();
 
+
+
                 // Set the title to the requested urls document title
                 document.title = $html.filter('title').text();
 
@@ -61,8 +98,14 @@ jQuery(function($) {
                     // Re run fitvid.js
                     $newContent.fitVids();
 
+
                     $ajaxContainer.html($newContent);
-                    $ajaxContainer.fadeIn(500);
+                    loadTheme($newContent);
+
+                    $ajaxContainer.fadeIn(500,function(){
+
+
+                    });
 
                     NProgress.done();
 
@@ -127,6 +170,7 @@ jQuery(function($) {
         $(".body").fitVids();
         ajaxLoad();
         headerNav();
+        loadTheme();
         // $('#history-back').on('click',function(e){
         //     e.preventDefault();
         //     window.History.back();

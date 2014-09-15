@@ -1,17 +1,22 @@
 /* general style */
-
 html {
+
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     text-rendering: optimizelegibility;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: grayscale;
 }
+
+
 body {
-    font: 18px/25px'Palatino', 'Palatino Linotype', 'Georgia', serif, Fangsong, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei;
+   /* For showing gradient effects without blocked by html background */
+    min-height: 400px;
+    /* font: 18px/25px Helvetica, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei; */
+    /* font: 18px/25px'Palatino', 'Palatino Linotype', 'Georgia', serif, Fangsong, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei; */
     margin: 0;
     padding: 0;
-    background-color: #FCFCFA;
+    color: #5C5C5C;
 }
 /* headlines */
 
@@ -22,9 +27,9 @@ h4,
 h5,
 h6 {
     /*font-family: 'Vollkorn', 'Georgia', serif;*/
-    font-family: 'Noticia Text', serif;
+    font-family: 'Noticia Text', Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, serif;
     font-weight: normal;
-    color: #222;
+    color: #363636;
     /*color: #AF3D04;*/
 }
 h1.title {
@@ -54,13 +59,16 @@ h2 {
 
 a {
     /*color: #432165;*/
-    color: #70A5E0;
+    color: #4785CC;
+}
+
+a {
+    font: 18px/25px 'Palatino', 'Palatino Linotype', 'Georgia', Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, serif;
 }
 /* a {text-decoration: none;} */
 
 a:hover {
     color: #3b185f;
-    background: #f9f8fa;
 }
 /* h1 a:hover, h2 a:hover, */
 
@@ -84,18 +92,24 @@ h3 a,
 .archive a,
 .pagination a,
 .tags a {
-    text-decoration: none;
     line-height: 32px;
     padding: 3px;
 }
 .tags a,
 .pagination a,
 .navigation a,
-.scroll a,
-.brand a {
+.social a,
+.scroll a {
     color: #777;
 }
-.brand a,
+
+.front a ,
+.back a ,
+.tags a ,
+.archive a,
+.pagination a,
+.scroll a,
+.social a,
 .navigation a {
     text-decoration: none;
 }
@@ -112,10 +126,21 @@ h3 a:hover,
 .index-tag a:hover,
 .navigation a:hover,
 .scroll a:hover,
-.brand a:hover {
+.social a:hover
+{
     background-color: #777;
     color: #FCFCFA;
 }
+
+
+/* Fix the height and width of font icon of a:hover 
+ * in webkit browser */
+.social a,
+.pagination a,
+.scroll a {
+  display: inline-block;
+}
+
 /* =================================================
  * Medias
  * ================================================= 
@@ -124,7 +149,7 @@ h3 a:hover,
 /* layout elements */
 
 .container {
-    margin: 15px auto;
+    margin: 0px auto;
     padding: 0;
 }
 .separator,
@@ -156,8 +181,8 @@ h3 a:hover,
         padding: 4px 8px;
     }
     .scroll a {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 18px 15px 13px 15px;
+        margin-top:-15px;
     }
     .pagination .prev a,
     .pagination .next a {
@@ -183,12 +208,19 @@ h3 a:hover,
         margin: 10px 0px 12px 0px;
         clear: left;
     }
+    .entry-overview .separator {
+        padding-bottom: 2px;
+        margin-bottom: 2px;
+    }
     .separator {
         padding-bottom: 22px;
         margin-bottom: 22px;
     }
     .body {
         padding-top: 50px;
+    }
+    footer.footer {
+        display: none;
     }
 }
 @media (min-width: 481px) {
@@ -220,8 +252,8 @@ h3 a:hover,
         padding: 8px 12px;
     }
     .scroll a {
-        padding-left: 32px;
-        padding-right: 32px;
+        padding: 18px 15px 14px 15px;
+        margin-top: -15px;
     }
     .pagination .prev a,
     .pagination .next a {
@@ -256,12 +288,21 @@ h3 a:hover,
     .entry-overview .detail {
         margin-left: 140px;
     }
+    .entry-overview .index-tag {
+      float:right;
+    }
+    .entry-overview .separator {
+      display: none;
+    }
     .separator {
         padding-bottom: 28px;
         margin-bottom: 28px;
     }
     .body {
         padding-top: 50px;
+    }
+    footer.footer {
+        display: block;
     }
 }
 @media (min-width: 961px) {
@@ -311,7 +352,10 @@ h3 a:hover,
     font-size: 1.1em;
 }
 .footer {
-    padding-top: 9px;
+    border-top: 1px dotted #ddd;
+    padding-top: 20px;
+    margin-top:15px;
+    margin-bottom: 15px;
     font-size: 16px;
     color: #777;
     text-align: center;
@@ -323,18 +367,16 @@ h3 a:hover,
     margin: 0;
     line-height: 40px;
 }
-.social {
-    padding-top: 30px;
-    padding-bottom: 10px;
-}
 .social a {
-    color: #777;
-    text-decoration: none;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 15px 5px;
 }
 .social ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: inline;
 }
 .social ul li {
     display: inline;
@@ -375,13 +417,12 @@ h1 + p.date {
 }
 .article-date {
     /* float: right; */
-    text-align: right;
-    color: #999;
-    font-size: 14px;
+    /* text-align: right; */
+    /* color: #999; */
+    /* font-size: 14px; */
     /* display: block; */
 }
 /* code formatting.  no monospace because of webkit (bug?) */
-
 pre,
 code,
 tt {
@@ -394,7 +435,6 @@ pre {
     border: 1px solid #ddd;
     padding: 10px;
     /* background: #fafafa; */
-    background-color: #F5F5EB;
     -moz-border-radius-bottomleft: 10px;
     -webkit-border-bottom-left-radius: 10px;
     -moz-border-radius-bottomright: 10px;
@@ -592,7 +632,6 @@ img.align-left {
 .index-tag {
     font-size: 14px;
     color: #777;
-    float: right;
 }
 .tagcloud a,
 .index-tag a {
@@ -645,7 +684,8 @@ table.highlighttable {
     left: 0;
     right: 0;
     top: 0;
-    background-color: #FCFCFA;
+    padding-top:15px;
+    opacity: 1;
 }
 .header {
     position: fixed;
@@ -661,7 +701,7 @@ table.highlighttable {
 .scroll,
 .navigation,
 .brand {
-    transition: all 0.3s ease-in-out 0s;
+    transition: left 0.5s ease-in-out 0s, opacity 0.5s ease-in-out 0s, color 0.5s ease-in-out 0s;
 }
 .dynamic .scroll,
 .navigation {
@@ -712,4 +752,232 @@ table.highlighttable {
 
 .hide {
     display: none;
+}
+
+ .header {
+    transition: background 0.5s ease-in-out 0s;
+ }
+ .header.transparent {
+   background: transparent;
+ }
+ .header .separator {
+    transition: background 0.5s ease-in-out 0s;
+ }
+ .header.transparent .separator {
+   background: transparent;
+   opacity: 0;
+ }
+ .pull-left {
+   float:left;
+ }
+ .pull-right {
+   float:right;
+ }
+
+/* Themes */
+
+/* http://clrs.cc/ */
+
+
+/* Backgrounds */
+.bg-navy {
+background-color: #001F3F; }
+.bg-blue {
+background-color: #0074D9; }
+.bg-aqua {
+background-color: #7FDBFF; }
+.bg-teal {
+background-color: #39CCCC; }
+.bg-olive {
+background-color: #3D9970; }
+.bg-green {
+background-color: #2ECC40; }
+.bg-lime {
+background-color: #01FF70; }
+.bg-yellow {
+background-color: #FFDC00; }
+.bg-orange {
+background-color: #FF851B; }
+.bg-red {
+background-color: #FF4136; }
+.bg-fuchsia {
+background-color: #F012BE; }
+.bg-purple {
+background-color: #B10DC9; }
+.bg-maroon {
+background-color: #85144B; }
+.bg-white {
+background-color: #fff; }
+.bg-gray {
+background-color: #aaa; }
+.bg-silver {
+background-color: #ddd; }
+.bg-black {
+background-color: #111; }
+/* Colors */
+.navy {
+color: #001F3F; }
+.blue {
+color: #0074D9; }
+.aqua {
+color: #7FDBFF; }
+.teal {
+color: #39CCCC; }
+.olive {
+color: #3D9970; }
+.green {
+color: #2ECC40; }
+.lime {
+color: #01FF70; }
+.yellow {
+color: #FFDC00; }
+.orange {
+color: #FF851B; }
+.red {
+color: #FF4136; }
+.fuchsia {
+color: #F012BE; }
+.purple {
+color: #B10DC9; }
+.maroon {
+color: #85144B; }
+.white {
+color: #fff; }
+.silver {
+color: #ddd; }
+.gray {
+color: #aaa; }
+.black {
+color: #111; }
+/* Border colors
+Use with another border utility that sets border-width and style
+i.e .border { border-width: 1px; border-style: solid; }
+*/
+.border--navy {
+border-color: #001F3F; }
+.border--blue {
+border-color: #0074D9; }
+.border--aqua {
+border-color: #7FDBFF; }
+.border--teal {
+border-color: #39CCCC; }
+.border--olive {
+border-color: #3D9970; }
+.border--green {
+border-color: #2ECC40; }
+.border--lime {
+border-color: #01FF70; }
+.border--yellow {
+border-color: #FFDC00; }
+.border--orange {
+border-color: #FF851B; }
+.border--red {
+border-color: #FF4136; }
+.border--fuchsia {
+border-color: #F012BE; }
+.border--purple {
+border-color: #B10DC9; }
+.border--maroon {
+border-color: #85144B; }
+.border--white {
+border-color: #fff; }
+.border--gray {
+border-color: #aaa; }
+.border--silver {
+border-color: #ddd; }
+.border--black {
+border-color: #111; }
+
+/* gradient  */
+
+/* Ash */
+/*  */
+/* Colour 1: #606c88 */
+/*  */
+/* Colour 2: #3f4c6b */
+/*  */
+/* The Strain */
+/*  */
+/* Colour 1: #870000 */
+/*  */
+/* Colour 2: #190A05 */
+/*  */
+/* A Lost Memory */
+/*  */
+/* Colour 1: #DE6262 */
+/*  */
+/* Colour 2: #FFB88C */
+/*  */
+/* Mystic */
+/*  */
+/* Colour 1: #757F9A */
+/*  */
+/* Colour 2: #D7DDE8 */
+/*  */
+
+
+/* Venice Blue */
+/*  */
+/* Colour 1: #085078 */
+/*  */
+/* Colour 2: #85D8CE */
+
+/* Steel Gray */
+/*  */
+/* Colour 1: #1F1C2C */
+/*  */
+/* Colour 2: #928DAB */
+
+/* Aqua Marine */
+/*  */
+/* Colour 1: #1A2980 */
+/*  */
+/* Colour 2: #26D0CE */
+a.green {
+    color: #2ECC40;
+}
+a.green:hover  {
+    color: #FCFCFA;
+    background-color: #2ECC40;
+}
+a.blue {
+    color: #0074D9;
+}
+a.blue:hover  {
+    color: #FCFCFA;
+    background-color: #0074D9;
+}
+a.red {
+    color: #FF4136;
+}
+a.red:hover  {
+    color: #FCFCFA;
+    background-color: #FF4136;
+}
+
+small,
+.small {
+  font-size: 75%;
+}
+
+.img-thumbnail {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  padding: 3px;
+  line-height: 1.42857;
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+img.avatar {
+  height:64px;
+  width:auto;
+  margin-left:10px;
+  margin-right:10px;
+}
+.copyright a {
+  border-bottom: 1px dotted #777;
 }

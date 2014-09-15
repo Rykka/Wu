@@ -1,78 +1,71 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-{% if articles %}
-  {% for article in (articles_page.object_list if articles_page else articles) %}
-    <div class=entry-overview>
-      <div class=date>{{ article.date.strftime('%Y/%m/%d') }}</div>
-      <div class=detail>
-          <h1><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
-          <div class='index-tag'>
-        {% for tag in article.tags %}
-        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-            {% if not loop.last %},{% endif %}
-        {% endfor %}
-          </div>
-          <br>
-          <div class=summary>
-           <small> {{ article.excerpt }} </small> 
-          </div>
-      </div>
-    </div>
-  {% endfor %}
-{%endif%}
-
-{% if articles_page and articles_paginator.num_pages > 1 %}
-<div class="pagination clearfix">
-  {% if articles_page.has_previous() %}
-    {% set num = articles_page.previous_page_number() %}
-    <div class="prev"><a href="{{ SITEURL }}/{{ page_name }}{{ num if num
-> 1 else '' }}.html"><i class="icon-chevron-left icon-large"></i></a></div>
-    {# {% else %} #}
-    {# <div class="prev disabled" ><a href="#">&#38;lt; Previous</a></div> #}
-  {% endif %}
-  <div class='page'>
-    {% set p = articles_paginator.num_pages %}
-    {% set c = articles_page.number %}
-
-      {% if p < 5 %}
-        {% for n in range( 1, 1 + p ) %}
-            <span class="{{ 'active disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a></span>
-        {% endfor %}
-    {% else %}
-        {% if c <= 3 %}
-            {% for n in range( 1, 5 ) %}
-                <span class="{{ 'active  disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a></span>
-            {% endfor %}
-            <span>...</span>
-            <span><a href="{{ SITEURL }}/{{ page_name }}{{ p }}.html">{{ p }}</a></span>
-        {% elif c >= p - 2 %}
-            <span><a href="{{ SITEURL }}/{{ page_name }}.html">1</a></span>
-            <span>...</span>
-            {% for n in range(p-3, p + 1) %}
-                <span class="{{ 'active disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a></span>
-            {% endfor %}
-        {% else %}
-            <span><a href="{{ SITEURL }}/{{ page_name }}.html">1</a></span>
-            <span>...</span>
-            {% for n in range(c-1, c + 2) %}
-                <span class="{{ 'active  disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a></span>
-            {% endfor %}
-            <span>...</span>
-            <span><a href="{{ SITEURL }}/{{ page_name }}{{ p }}.html">{{ p }}</a></span>
+{% extends "base.html" %} {% block content %} {% if articles %} {% for article
+in (articles_page.object_list if articles_page else articles) %}
+<div class='entry-overview clearfix'>
+    <div class=date>{{ article.date.strftime('%Y/%m/%d') }}</div>
+    <div class=detail>
+        <h1><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1>
+        {% if article.tags %}
+        <div class='index-tag'>
+            <span class='muted'> <i class="icon-tag"></i> </span>
+            {% for tag in article.tags %}
+            <a {% if tag==THEME_TAG.GREEN %} class='tag-theme green' data-theme='green' {% endif %}
+            {% if tag==THEME_TAG.BLUE %} class='tag-theme blue' data-theme='blue' {% endif
+            %} {% if tag==THEME_TAG.RED %} class='tag-theme red' data-theme='red' {% endif %} href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+            {% if not loop.last %},{% endif %} {% endfor %}
+        </div>
         {% endif %}
-    {% endif %}
+        <div class=summary>
+            <small> {{ article.excerpt }} </small> 
+        </div>
+    </div>
+    <div class="separator"></div>
+</div>
+{% endfor %} {%endif%} {% if articles_page and articles_paginator.num_pages > 1
+%}
+<div class="pagination clearfix">
+    {% if articles_page.has_previous() %} {% set num = articles_page.previous_page_number()
+    %}
+    <div class="prev"><a href="{{ SITEURL }}/{{ page_name }}{{ num if num
+> 1 else '' }}.html"><i class="icon-chevron-left icon-large"></i></a>
+    </div>
+    {# {% else %} #} {#
+    <div class="prev disabled"><a href="#">&#38;lt; Previous</a>
+    </div>#} {% endif %}
+    <div class='page'>
+        {% set p = articles_paginator.num_pages %} {% set c = articles_page.number %} {%
+        if p
+        < 5 %} {% for n in range( 1, 1 + p ) %} <span class="{{ 'active disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a>
+            </span>
+            {% endfor %} {% else %} {% if c
+            <=3 %} {% for n in range( 1, 5 ) %}
+            <span class="{{ 'active  disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a>
+                </span>
+                {% endfor %}
+                <span>...</span>
+                <span><a href="{{ SITEURL }}/{{ page_name }}{{ p }}.html">{{ p }}</a></span>
+                {% elif c >= p - 2 %}
+                <span><a href="{{ SITEURL }}/{{ page_name }}.html">1</a></span>
+                <span>...</span>
+                {% for n in range(p-3, p + 1) %}
+                <span class="{{ 'active disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a></span>
+                {% endfor %} {% else %}
+                <span><a href="{{ SITEURL }}/{{ page_name }}.html">1</a></span>
+                <span>...</span>
+                {% for n in range(c-1, c + 2) %}
+                <span class="{{ 'active  disabled' if n == c else '' }}"><a href="{{ SITEURL }}/{{ page_name }}{{ n if n > 1 else '' }}.html">{{ n }}</a></span>
+                {% endfor %}
+                <span>...</span>
+                <span><a href="{{ SITEURL }}/{{ page_name }}{{ p }}.html">{{ p }}</a></span>
+                {% endif %} {% endif %}
 
     </div>
-  {% if articles_page.has_next() %}
+    {% if articles_page.has_next() %}
     <div class="next"><a href="{{ SITEURL }}/{{ page_name }}{{
             articles_page.next_page_number()
-            }}.html"><i class="icon-chevron-right icon-large"></i></a></div>
-    {# {% else %} #}
-    {# <div class="next disabled"><a href="#" >Next &gt;</a></div> #}
-  {% endif %}
+            }}.html"><i class="icon-chevron-right icon-large"></i></a>
+    </div>
+    {# {% else %} #} {#
+    <div class="next disabled"><a href="#">Next &gt;</a>
+    </div>#} {% endif %}
 </div>
-{% endif %}
-
-{% endblock %}
+{% endif %} {% endblock %}

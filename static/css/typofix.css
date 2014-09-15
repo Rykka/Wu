@@ -1,0 +1,10 @@
+
+/* .typo a{ border-bottom:1px solid #1abc9c; } */
+/* .typo a:hover{ border-bottom-color:#555; color:#555; text-decoration:none; } */
+/* a:hover{ text-decoration:underline; } */
+/* a{ color:#1abc9c; } */
+strong, b{font-weight:bold;color:#4D4D4D;}
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
+.typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote{
+margin-bottom:1em;
+}

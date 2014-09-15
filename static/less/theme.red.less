@@ -1,0 +1,9 @@
+@import 'color';
+@import 'mixins';
+
+@color:@red;
+
+@import 'theme';
+body {
+    .directional(darken(@color,10%) 0px, @color 300px, 230deg);
+}

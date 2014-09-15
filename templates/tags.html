@@ -4,7 +4,14 @@
 <h1> Tags </h1>
 <ul class=tagcloud>
     {% for tag in tag_cloud %}
-        <li class="tag-{{ tag.1 }}"><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>
+    <li class="tag-{{ tag.1 }}"><a 
+            {% if tag.0 == THEME_TAG.GREEN %} class='tag-theme green' 
+            data-theme='green' {% endif %}
+            {% if tag.0 == THEME_TAG.BLUE %} class='tag-theme blue'
+            data-theme='blue' {% endif %}
+            {% if tag.0 == THEME_TAG.RED %} class='tag-theme red' 
+            data-theme='red' {% endif %}
+            href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0 }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
