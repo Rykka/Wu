@@ -8,3 +8,14 @@ strong, b{font-weight:bold;color:#4D4D4D;}
 .typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote{
 margin-bottom:1em;
 }
+
+.typo-em, .typo em, legend, caption{
+color:#999999;
+font-weight:inherit;
+}
+
+h1, h2, h3, h4, h5, h6{
+font-family:'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+font-weight:200;
+color:#999999;
+}

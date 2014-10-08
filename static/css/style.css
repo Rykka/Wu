@@ -957,7 +957,7 @@ a.red:hover  {
 
 small,
 .small {
-  font-size: 75%;
+  font-size: 80%;
 }
 
 .img-thumbnail {
@@ -981,3 +981,4 @@ img.avatar {
 .copyright a {
   border-bottom: 1px dotted #777;
 }
+

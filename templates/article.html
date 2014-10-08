@@ -4,30 +4,30 @@
 
 {% block content %}
 
-    <h1 class="title"> {{ article.title }}</h1>
+    <h1 class="title">{{ article.title }}</h1>
     <div class='clearfix'>
     {% if article.tags %}
     <div class='pull-left'>
         <span class=tags>
             <span class='muted small'> <i class="icon-tag"></i> </span>
         {% for tag in article.tags %}
-        <a 
-            {% if tag == THEME_TAG.GREEN  %} id='tag-theme' class='green' 
-            data-theme='green' {% endif %}
-            {% if tag == THEME_TAG.BLUE %} id='tag-theme' class='blue'
-            data-theme='blue' {% endif %}
-            {% if tag == THEME_TAG.RED %} id='tag-theme' class='red' 
-            data-theme='red' {% endif %}
-            href="{{ SITEURL }}/{{ tag.url }}">
-            <small>{{ tag }}</small></a>
+        <a class='small
+            {% for theme, tag_name in THEME_TAG.items() %}
+                {% if tag_name == tag %}
+                {{theme}}'      id='tag-theme'
+                data-theme='{{theme -}}
+                {% endif %}
+            {% endfor %}'
+            href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
         {% endfor %}
         </span>
     </div>
     {% endif %}
     <div class='muted small pull-right'> {{ AUTHOR }} at {{ article.locale_date }} </div>
     </div>
-    <br>
-    
+    <p class='muted small'>本文地址：<a class='muted small' href="{{ SITEURL }}/{{ article.url }}">http://rykka.me/{{ article.url }}</a>
+    </p>
+
     {{ article.content }}
     {#{% include "twitter.html" %}#}
     {% include "youyan.html" %}

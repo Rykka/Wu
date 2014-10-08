@@ -7,14 +7,19 @@ in (articles_page.object_list if articles_page else articles) %}
         {% if article.tags %}
         <div class='index-tag'>
             <span class='muted'> <i class="icon-tag"></i> </span>
+
             {% for tag in article.tags %}
-            <a {% if tag==THEME_TAG.GREEN %} class='tag-theme green' data-theme='green' {% endif %}
-            {% if tag==THEME_TAG.BLUE %} class='tag-theme blue' data-theme='blue' {% endif
-            %} {% if tag==THEME_TAG.RED %} class='tag-theme red' data-theme='red' {% endif %} href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+            <a 
+            {% for theme, tag_name in THEME_TAG.items() %}
+                {% if tag_name == tag %}
+                    class='tag-theme {{theme}}'
+                {% endif %}
+            {% endfor %}
+            href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
             {% if not loop.last %},{% endif %} {% endfor %}
         </div>
         {% endif %}
-        <div class=summary>
+        <div class='summary clearfix'>
             <small> {{ article.excerpt }} </small> 
         </div>
     </div>
